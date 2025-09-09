@@ -1,0 +1,81 @@
+{
+  "name": "laravel-model",
+  "displayName": "Laravel Model",
+  "description": "Code actions, diagnostics, and CodeLens for Eloquent model properties ($fillable, $guarded, $casts, $hidden, $appends) + relations DocBlocks.",
+  "version": "0.1.0",
+  "author": "Loai Kanou",
+  "publisher": "loaikanou",
+  "engines": { "vscode": "^1.100.0" },
+  "categories": ["Programming Languages"],
+  "keywords": [
+    "laravel",
+    "model",
+    "eloquent",
+    "template",
+    "templates",
+    "bootstrap",
+    "boilerplate",
+    "replace",
+    "search",
+    "scaffolding"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Microsoft/vscode-extension-samples"
+  },
+  "activationEvents": [
+    "onStartupFinished",
+    "onLanguage:php",
+    "onCommand:laravelModels.scanWorkspace",
+    "onCommand:laravelModels.generateFillable",
+    "onCommand:laravelModels.syncDocblocks"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      { "command": "laravelModels.scanWorkspace", "title": "Laravel Models: Scan Workspace" },
+      { "command": "laravelModels.generateFillable", "title": "Laravel Models: Generate $fillable" },
+      { "command": "laravelModels.syncDocblocks", "title": "Laravel Models: Sync DocBlocks" }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Laravel Models",
+      "properties": {
+        "laravelModels.migrationGlobs": {
+          "type": "array",
+          "default": ["database/migrations/**/*.php"],
+          "description": "Glob patterns to parse migrations for column discovery."
+        },
+        "laravelModels.enableDbAware": {
+          "type": "boolean",
+          "default": false,
+          "description": "If true, the extension may run `php artisan` to query model metadata."
+        },
+        "laravelModels.artisanPath": {
+          "type": "string",
+          "default": "php artisan",
+          "description": "Command used to run Artisan (e.g., `php -d detect_unicode=0 artisan`)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsc -p .",
+    "watch": "tsc -w -p .",
+    "compile": "tsc -p ./",
+    "vscode:package": "vsce package",
+    "vscode:publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "^22",
+    "@types/vscode": "^1.100.0",
+    "@vscode/vsce": "^3.6.0",
+    "eslint": "^9.35.0",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.43.0"
+  },
+  "dependencies": {
+    "minimatch": "^10.0.3"
+  },
+  "license": "MIT"
+}
