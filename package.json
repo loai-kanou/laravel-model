@@ -21,7 +21,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/Microsoft/vscode-extension-samples"
+    "url": "https://github.com/loai-kanou/laravel-model"
   },
   "activationEvents": [
     "onStartupFinished",
